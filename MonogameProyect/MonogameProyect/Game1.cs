@@ -26,7 +26,8 @@ namespace MonogameProyect
         {
             // TODO: Add your initialization logic here
 
-            _gameObject = new GameObject(new SpriteRenderer(), new Transform());
+            _gameObject = new GameObject(new SpriteRenderer(), new Transform(), new Move());
+            _gameObject.InitializeScript();
             base.Initialize();
         }
 
@@ -41,8 +42,7 @@ namespace MonogameProyect
             _gameObject.GetSpriteRenderer.LoadContent(this, lol);
         }
 
-        float velX = 0;
-        float velY = 0;
+        
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed 
@@ -52,27 +52,7 @@ namespace MonogameProyect
 
             // TODO: Add your update logic here
             
-            KeyboardState state = Keyboard.GetState();
-            if (state.IsKeyDown(Keys.Right))
-            {
-                velX++;
-               _gameObject.GetTrasform.PosX(velX);
-            }
-            if (state.IsKeyDown(Keys.Left))
-            {
-                velX--;
-                _gameObject.GetTrasform.PosX(velX);
-            }
-            if (state.IsKeyDown(Keys.Up))
-            {
-                velY--;
-                _gameObject.GetTrasform.PosY(velY);
-            }
-            if (state.IsKeyDown(Keys.Down))
-            {
-                velY++;
-                _gameObject.GetTrasform.PosY(velY);
-            }
+            _gameObject.RunScript();
 
             base.Update(gameTime);
         }

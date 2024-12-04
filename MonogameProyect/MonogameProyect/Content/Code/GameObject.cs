@@ -1,13 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace MonogameProyect.Content.Code
 {
     internal class GameObject
     {
+        #region References
+
         Transform transform;
         AudioSource audioSource;
         SpriteRenderer spriteRenderer;
         Collider collider;
+        Scripts script;
+
+        #endregion
+
+        #region Constructors
 
         public GameObject()
         {
@@ -29,6 +37,52 @@ namespace MonogameProyect.Content.Code
             transform.SetSpriteRenderer(spriteRenderer);
         }
 
+        public GameObject(SpriteRenderer pSpriteRenderer, Transform pTransform, Scripts script)
+        {
+            spriteRenderer = pSpriteRenderer;
+            transform = pTransform;
+            transform.SetSpriteRenderer(spriteRenderer);
+            _scripts = new List<Scripts>();
+            AddScript(script);
+        }
+
+        #endregion
+
+        List<Scripts> _scripts;
+
+        public void AddScript(Scripts scripts)
+        {
+            _scripts.Add(scripts);
+        }
+
+        public void InitializeScript()
+        {
+            if (_scripts == null)
+                return;
+            foreach (Scripts script in _scripts)
+            {
+                script.InitializeScript();
+                script.SetGameObeject(this);
+            }
+        }
+
+        public void RunScript()
+        {
+            if (_scripts == null) 
+                return;
+            foreach (Scripts script in _scripts)
+            {
+                script.ExecuteScript();
+            }
+        }
+
+        public List<Scripts> GetScripts()
+        {
+            return _scripts;
+        }
+
+        #region Getters
+
         public Transform GetTrasform
         {
             get { return transform; }
@@ -48,5 +102,12 @@ namespace MonogameProyect.Content.Code
         {
             get { return collider; }
         }
+        
+        public Scripts GetScript
+        {
+            get { return script; }
+        }
+
+        #endregion
     }
 }

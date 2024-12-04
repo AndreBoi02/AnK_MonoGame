@@ -25,9 +25,14 @@ namespace MonogameProyect
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            int x = 100;
+            int y = 100;
 
             _gameObject = new GameObject(new SpriteRenderer(), new Transform(), new Move());
+            _gameObject.GetTrasform.SetPosition(new Vector2(100, 100));
+            _gameObject.GetTrasform.SetScale(new Vector2(.2f, .2f));
             _gameObject.InitializeScript();
+
             base.Initialize();
         }
 
@@ -53,6 +58,7 @@ namespace MonogameProyect
             // TODO: Add your update logic here
             
             _gameObject.RunScript();
+            
 
             base.Update(gameTime);
         }
@@ -65,7 +71,7 @@ namespace MonogameProyect
 
             _gameObject.GetSpriteRenderer.DrawSprite(this);
             //_gameObject.GetTrasform.SetPosition(new Vector2(100, 100));
-
+            
             base.Draw(gameTime);
         }
 

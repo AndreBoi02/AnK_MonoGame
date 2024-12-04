@@ -1,9 +1,4 @@
 ﻿using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MonogameProyect.Content.Code
 {
@@ -15,8 +10,9 @@ namespace MonogameProyect.Content.Code
         public override void InitializeScript()
         {
             base.InitializeScript();
-            velX = 0;
-            velY = 0;
+            velX = _gameObject.GetTrasform.GetPosition.X;
+            velY = _gameObject.GetTrasform.GetPosition.Y;
+
         }
 
         public override void ExecuteScript()

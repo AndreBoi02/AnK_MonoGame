@@ -4,32 +4,62 @@ namespace MonogameProyect.Content.Code
 {
     internal class Transform
     {
-        Vector2 _position;
-        Vector2 _scale;
+        #region References
+
         SpriteRenderer _sprieRenderer;
 
-        //Transform(SpriteRenderer spriteRenderer, Vector2 position)
-        //{
-        //    _position = position;
-        //    _sprieRenderer = spriteRenderer;
-        //    _sprieRenderer.SetSpritePosition(_position);
-        //}
+        #endregion
+
+        #region Variables
+
+        Vector2 _position;
+        Vector2 _scale;
+
+        #endregion
+
+        #region PublicMethods
 
         public void SetSpriteRenderer(SpriteRenderer spriteRenderer)
         {
             _sprieRenderer = spriteRenderer;
         }
 
-        public Vector2 GetScale
-        {
-            get { return _scale; }
-        }
+        #endregion
+
+        #region ScaleStuff
 
         public void SetScale(Vector2 value) 
         {
             _scale = value;
+            _sprieRenderer.SetSpriteScale(_scale);
         }
 
+        public void ScaleX(int val) 
+        {
+            _scale.X = val;
+        }
+        
+        public void ScaleX(float val) 
+        {
+            _scale.X = val;
+        }
+
+        public void ScaleY(int val) 
+        {
+            _scale.Y = val;
+        }
+        
+        public void ScaleY(float val) 
+        {
+            _scale.Y = val;
+        }
+
+        public Vector2 GetScale {
+            get { return _scale; }
+        }
+
+        #endregion
+       
         #region PositionStuff
 
         public void SetPosition(Vector2 value)

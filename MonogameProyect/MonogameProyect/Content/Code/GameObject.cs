@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MonogameProyect.Content.Code
 {
@@ -48,6 +47,8 @@ namespace MonogameProyect.Content.Code
 
         #endregion
 
+        #region ScriptSystem
+
         List<Scripts> _scripts;
 
         public void AddScript(Scripts scripts)
@@ -61,8 +62,8 @@ namespace MonogameProyect.Content.Code
                 return;
             foreach (Scripts script in _scripts)
             {
-                script.InitializeScript();
                 script.SetGameObeject(this);
+                script.InitializeScript();
             }
         }
 
@@ -80,6 +81,8 @@ namespace MonogameProyect.Content.Code
         {
             return _scripts;
         }
+
+        #endregion
 
         #region Getters
 

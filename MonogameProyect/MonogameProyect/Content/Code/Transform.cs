@@ -7,6 +7,7 @@ namespace MonogameProyect.Content.Code
         #region References
 
         SpriteRenderer _sprieRenderer;
+        UI _uI;
 
         #endregion
 
@@ -24,6 +25,11 @@ namespace MonogameProyect.Content.Code
             _sprieRenderer = spriteRenderer;
         }
 
+        public void SetUI(UI uI)
+        {
+            _uI = uI;
+        }
+
         #endregion
 
         #region ScaleStuff
@@ -31,7 +37,8 @@ namespace MonogameProyect.Content.Code
         public void SetScale(Vector2 value) 
         {
             _scale = value;
-            _sprieRenderer.SetSpriteScale(_scale);
+            _sprieRenderer?.SetSpriteScale(_scale);
+            _uI?.SetButtonScale(_scale);
         }
 
         public void ScaleX(int val) 
@@ -66,6 +73,8 @@ namespace MonogameProyect.Content.Code
         {
             _position = value;
             _sprieRenderer?.SetSpritePosition(_position);
+            _uI?.SetTextPosition(_position);
+            _uI?.SetButtonPosition(_position);
         }
 
         public Vector2 GetPosition
@@ -77,24 +86,28 @@ namespace MonogameProyect.Content.Code
         {
             _position.X = val;
             _sprieRenderer?.SetSpritePosition(_position);
+            _uI?.SetTextPosition(_position);
         }
 
         public void PosX(float val)
         {
             _position.X = val;
             _sprieRenderer?.SetSpritePosition(_position);
+            _uI?.SetTextPosition(_position);
         }
 
         public void PosY(int val)
         {
             _position.Y = val;
             _sprieRenderer?.SetSpritePosition(_position);
+            _uI?.SetTextPosition(_position);
         }
 
         public void PosY(float val)
         {
             _position.Y = val;
             _sprieRenderer?.SetSpritePosition(_position);
+            _uI?.SetTextPosition(_position);
         }
 
         #endregion

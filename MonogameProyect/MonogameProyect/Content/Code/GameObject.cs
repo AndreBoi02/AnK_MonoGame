@@ -11,6 +11,7 @@ namespace MonogameProyect.Content.Code
         SpriteRenderer spriteRenderer;
         Collider collider;
         Scripts script;
+        UI uI;
 
         #endregion
 
@@ -33,7 +34,23 @@ namespace MonogameProyect.Content.Code
         {
             spriteRenderer = pSpriteRenderer;
             transform = pTransform;
-            transform.SetSpriteRenderer(spriteRenderer);
+            transform?.SetSpriteRenderer(spriteRenderer);
+        }
+
+        public GameObject(UI pUI, Transform pTransform)
+        {
+            uI = pUI;
+            transform = pTransform;
+            transform.SetUI(pUI);
+        }
+
+        public GameObject( SpriteRenderer pSpriteRenderer, UI pUI, Transform pTransform)
+        {
+            spriteRenderer = pSpriteRenderer;
+            transform = pTransform;
+            transform?.SetSpriteRenderer(spriteRenderer);
+            uI = pUI;
+            transform.SetUI(pUI);
         }
 
         public GameObject(SpriteRenderer pSpriteRenderer, Transform pTransform, Scripts script)
@@ -109,6 +126,11 @@ namespace MonogameProyect.Content.Code
         public Scripts GetScript
         {
             get { return script; }
+        }
+
+        public UI GetUI 
+        {
+            get { return uI; }
         }
 
         #endregion

@@ -8,7 +8,8 @@ namespace MonogameProyect.Content.Code
         private Texture2D spriteTexture;
         private Vector2 spritePosition;
         private Vector2 nonUniformScale = Vector2.One;
-         
+        Color _shade = Color.White;
+
         public void LoadContent(Game1 game1, string spriteName)
         {
             spriteTexture = game1.Content.Load<Texture2D>(spriteName);
@@ -17,8 +18,9 @@ namespace MonogameProyect.Content.Code
         public void DrawSprite(Game1 game1)
         {
             game1.GetSpriteBatch.Begin();
+
             game1.GetSpriteBatch.Draw(spriteTexture, spritePosition, null,
-                Color.White, 0f, Vector2.Zero, nonUniformScale, SpriteEffects.None, 0f);
+                _shade, 0f, Vector2.Zero, nonUniformScale, SpriteEffects.None, 0f);
 
             game1.GetSpriteBatch.End();
         }
@@ -31,6 +33,16 @@ namespace MonogameProyect.Content.Code
         public void SetSpriteScale(Vector2 value) 
         {
             nonUniformScale = value;
+        }
+
+        public void ChangeColor(Color pColor)
+        {
+            _shade = pColor;
+        }
+
+        public Texture2D GetTexture2D() 
+        {
+            return spriteTexture; 
         }
     }
 }

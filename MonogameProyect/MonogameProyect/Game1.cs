@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Input;
 using MonogameProyect.Content.Code;
 using System;
 using System.Diagnostics;
+//List
+using System.Collections.Generic;
 
 namespace MonogameProyect
 {
@@ -12,11 +14,10 @@ namespace MonogameProyect
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        //SpriteRenderer _spriteRenderer;
+        List<Scenes> _scenes;
 
-        GameObject _gameObject;
-        GameObject _gameObject2;
-        GameObject _gameObject3;
+        MenuScene _menuScene;
+        CreditsScene _creditsScene;
 
         public Game1()
         {
@@ -29,22 +30,15 @@ namespace MonogameProyect
         {
             // TODO: Add your initialization logic here
 
-            //Crea un gameObject de un jugador
-            _gameObject = new GameObject(new SpriteRenderer(), new Transform(), new Move());
-            _gameObject.GetTrasform.SetPosition(new Vector2(100, 100));
-            _gameObject.GetTrasform.SetScale(new Vector2(.2f, .2f));
-            _gameObject.InitializeScript();
+            _scenes = new List<Scenes>();
 
-            //Crea un gameObject de Texto UI
-            _gameObject2 = new GameObject(new UI(), new Transform());
-            _gameObject2.GetTrasform.SetPosition(new Vector2(400, 200));
-            string text = "BRUHHH";
-            _gameObject2.GetUI.CreateText(text);
+            _menuScene = new MenuScene();
+            _menuScene.InitializeScene();
+            _scenes.Add(_menuScene);
 
-            //Crea un gameObject de Boton UI
-            _gameObject3 = new GameObject(new SpriteRenderer(), new UI(), new Transform());
-            _gameObject3.GetTrasform.SetPosition(new Vector2(400, 200));
-            _gameObject3.GetTrasform.SetScale(new Vector2(.02f, .02f));
+            _creditsScene = new CreditsScene();
+            _creditsScene.InitializeScene();
+            _scenes.Add(_creditsScene);
 
             base.Initialize();
         }
@@ -55,17 +49,11 @@ namespace MonogameProyect
 
             // TODO: use this.Content to load your game content here
 
-            string imageName = "Images/Yeet";
-            _gameObject.GetSpriteRenderer.LoadContent(this, imageName);
-
-            string fontName = "MyMenuFont";
-            _gameObject2.GetUI.GetText().LoadContent(this, fontName);
-
-            string imageName2 = "Images/OF";
-            _gameObject3.GetSpriteRenderer.LoadContent(this, imageName2);
-            _gameObject3.GetUI.CreateButton(_gameObject3.GetSpriteRenderer);
+            _menuScene.LoadContentScene(this);
+            _creditsScene.LoadContentScene(this);
         }
 
+        int sceneIdx = 1;
         
         protected override void Update(GameTime gameTime)
         {
@@ -73,26 +61,25 @@ namespace MonogameProyect
                 || 
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            if (Keyboard.GetState().IsKeyDown(Keys.F))
+            {
+                sceneIdx = 1;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Q))
+            {
+                sceneIdx = 0;
+            }
 
-            // TODO: Add your update logic here
-            
-            _gameObject.RunScript();
+            _scenes[sceneIdx].UpdateScene();
 
-            _gameObject3.GetUI.GetButton().Update();
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
-
-            _gameObject.GetSpriteRenderer.DrawSprite(this);
-
-            _gameObject2.GetUI.GetText().DrawText(this);
-
-            _gameObject3.GetSpriteRenderer.DrawSprite(this);
+            _scenes[sceneIdx].DrawScene(this);
             
             base.Draw(gameTime);
         }

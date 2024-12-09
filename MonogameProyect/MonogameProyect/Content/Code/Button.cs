@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace MonogameProyect.Content.Code
 {
@@ -31,10 +32,11 @@ namespace MonogameProyect.Content.Code
             MouseState mouseState = Mouse.GetState();
             Rectangle cursor = new((int)mouseState.Position.X, (int)mouseState.Position.Y, 1, 1);
 
-            if (cursor.Intersects(_rectangle))
+            if (cursor.Intersects(_rectangle) && mouseState.LeftButton == ButtonState.Pressed)
             {
                 _shade = Color.DarkGray;
                 _spriteRenderer?.ChangeColor(_shade);
+                //actionToDo?.Invoke();
             }
             else
             {

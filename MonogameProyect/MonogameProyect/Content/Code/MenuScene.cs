@@ -18,8 +18,8 @@ namespace MonogameProyect.Content.Code
             //This is the title text
             _titleText = new GameObject(new UI(), new Transform());
             _titleText.GetTrasform.SetPosition(new Vector2(400, 50));
-            string text = "A N K";
-            _titleText.GetUI.CreateText(text);
+            string text = Localization.GetText("Title");
+            _titleText.GetUI.CreateText(text, "Title");
             _gameObjects.Add(_titleText);
 
             //This is the start button

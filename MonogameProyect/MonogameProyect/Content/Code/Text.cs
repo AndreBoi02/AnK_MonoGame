@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace MonogameProyect.Content.Code
 {
@@ -9,11 +10,14 @@ namespace MonogameProyect.Content.Code
 
         Viewport _viewport;
         string _output;
+        string _dictionaryKey;
 
-        public Text(Vector2 position, string output)
+        public Text(Vector2 position, string output, string dicKey)
         {
             _position = position;
             _output = output;
+            _dictionaryKey = dicKey;
+            Localization.UpdateTexts += OnUpdateText;
         }
 
         public void LoadContent(Game1 game1, string fontName)
@@ -34,6 +38,11 @@ namespace MonogameProyect.Content.Code
                 0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
 
             game1.GetSpriteBatch.End();
+        }
+
+        public void OnUpdateText()
+        {
+            _output = Localization.GetText(_dictionaryKey);
         }
 
         public void SetViewport(Viewport viewport)

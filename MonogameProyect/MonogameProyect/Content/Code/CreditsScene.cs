@@ -14,7 +14,8 @@ namespace MonogameProyect.Content.Code
             _gameObjects = new List<GameObject>();
 
             //Test PLayer Script
-            _player = new GameObject(new SpriteRenderer(), new Transform(), new Move());
+            _player = new GameObject(new SpriteRenderer(), new Transform(), new Shot());
+            _player.AddScript(new Move());
             _player.GetTrasform.SetPosition(new Vector2(100, 100));
             _player.GetTrasform.SetScale(new Vector2(.2f, .2f));
             _player.InitializeScript();

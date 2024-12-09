@@ -11,9 +11,9 @@ namespace MonogameProyect.Content.Code
         protected Vector2 _position;
         protected Vector2 _scale;
 
-        public void CreateText(string pText)
+        public void CreateText(string pText, string pDKey)
         {
-           _text = new Text(_position, pText);
+           _text = new Text(_position, pText, pDKey);
         }
 
         public void CreateButton(SpriteRenderer spriteRenderer) 

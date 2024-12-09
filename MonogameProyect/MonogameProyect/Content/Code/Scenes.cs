@@ -8,7 +8,10 @@ namespace MonogameProyect.Content.Code
     {
         protected List<GameObject> _gameObjects;
 
-        public virtual void InitializeScene(){}
+        public virtual void InitializeScene()
+        {
+            //GameObject.AddGameObject += OnAddGameObject;
+        }
 
         public virtual void LoadContentScene(Game1 game1){}
 
@@ -32,6 +35,11 @@ namespace MonogameProyect.Content.Code
                 if (gameObject.GetUI != null && gameObject.GetUI.GetText() != null)
                     gameObject.GetUI.GetText().DrawText(game1);
             }
+        }
+
+        public virtual void OnAddGameObject(GameObject gameObject)
+        {
+            _gameObjects.Add(gameObject);
         }
     }
 }

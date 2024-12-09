@@ -23,6 +23,7 @@ namespace MonogameProyect
         {
             // TODO: Add your initialization logic here
 
+            Localization.InitializeText();
             SceneManager.InitializeScences();
 
             base.Initialize();
@@ -51,6 +52,15 @@ namespace MonogameProyect
             if (Keyboard.GetState().IsKeyDown(Keys.Q))
             {
                 SceneManager.ChangeScene(0);
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.E))
+            {
+                Localization.ChangeLanguage(Languages.ENG);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.G))
+            {
+                Localization.ChangeLanguage(Languages.ESP);
             }
 
             SceneManager.UpdateScenes();

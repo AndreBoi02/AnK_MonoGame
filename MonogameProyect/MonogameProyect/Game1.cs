@@ -4,8 +4,6 @@ using Microsoft.Xna.Framework.Input;
 using MonogameProyect.Content.Code;
 using System;
 using System.Diagnostics;
-//List
-using System.Collections.Generic;
 
 namespace MonogameProyect
 {
@@ -13,11 +11,6 @@ namespace MonogameProyect
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
-        List<Scenes> _scenes;
-
-        MenuScene _menuScene;
-        CreditsScene _creditsScene;
 
         public Game1()
         {
@@ -30,15 +23,7 @@ namespace MonogameProyect
         {
             // TODO: Add your initialization logic here
 
-            _scenes = new List<Scenes>();
-
-            _menuScene = new MenuScene();
-            _menuScene.InitializeScene();
-            _scenes.Add(_menuScene);
-
-            _creditsScene = new CreditsScene();
-            _creditsScene.InitializeScene();
-            _scenes.Add(_creditsScene);
+            SceneManager.InitializeScences();
 
             base.Initialize();
         }
@@ -49,11 +34,9 @@ namespace MonogameProyect
 
             // TODO: use this.Content to load your game content here
 
-            _menuScene.LoadContentScene(this);
-            _creditsScene.LoadContentScene(this);
-        }
+            SceneManager.LoadScenesContent(this);
 
-        int sceneIdx = 1;
+        }
         
         protected override void Update(GameTime gameTime)
         {
@@ -63,14 +46,14 @@ namespace MonogameProyect
                 Exit();
             if (Keyboard.GetState().IsKeyDown(Keys.F))
             {
-                sceneIdx = 1;
+                SceneManager.ChangeScene(1);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Q))
             {
-                sceneIdx = 0;
+                SceneManager.ChangeScene(0);
             }
 
-            _scenes[sceneIdx].UpdateScene();
+            SceneManager.UpdateScenes();
 
             base.Update(gameTime);
         }
@@ -79,7 +62,7 @@ namespace MonogameProyect
         {
             GraphicsDevice.Clear(Color.Black);
 
-            _scenes[sceneIdx].DrawScene(this);
+            SceneManager.DrawScenes(this);
             
             base.Draw(gameTime);
         }

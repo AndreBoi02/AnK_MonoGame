@@ -57,7 +57,7 @@ namespace MonogameProyect.Content.Code
 
         void StartGame(object sender, EventArgs e)
         {
-            SceneManager.ChangeScene(3);
+            SceneManager.ChangeScene(1);
         }
 
         void ShowOptions(object sender, EventArgs e)

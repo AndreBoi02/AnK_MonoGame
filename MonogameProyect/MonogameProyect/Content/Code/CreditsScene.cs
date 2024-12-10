@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 
 namespace MonogameProyect.Content.Code
@@ -8,7 +7,6 @@ namespace MonogameProyect.Content.Code
     {
         GameObject _creditsTitle;
         GameObject _creditsText;
-        GameObject _exitButton;
 
         public override void InitializeScene()
         {
@@ -30,12 +28,6 @@ namespace MonogameProyect.Content.Code
             _creditsText.GetUI.CreateText(creditText, "CreditsText");
             _gameObjects.Add(_creditsText);
 
-            //Exit Button
-            _exitButton = new GameObject(new SpriteRenderer(), new UI(), new Transform());
-            _exitButton.GetTrasform.SetPosition(new Vector2(700, 370));
-            _exitButton.GetTrasform.SetScale(new Vector2(.2f, .2f));
-            _gameObjects.Add(_exitButton);
-
         }
 
         public override void LoadContentScene(Game1 game1)
@@ -46,17 +38,6 @@ namespace MonogameProyect.Content.Code
             //Credits Text Content
             string textFontName = "Fonts/TextFont";
             _creditsText.GetUI.GetText().LoadContent(game1, textFontName);
-
-            //Exit Button Content
-            string imageName = "Images/Yeet";
-            _exitButton.GetSpriteRenderer.LoadContent(game1, imageName);
-            _exitButton.GetUI.CreateButton(_exitButton.GetSpriteRenderer);
-            _exitButton.GetUI.GetButton().OnClick += FinishGame;
-        }
-
-        void FinishGame(object sender, EventArgs e)
-        {
-            SceneManager.ChangeScene(0);
         }
     }
 }

@@ -11,7 +11,6 @@ namespace MonogameProyect
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private GameTime gameTime1;
         
         public Game1()
         {

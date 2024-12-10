@@ -14,8 +14,6 @@ namespace MonogameProyect.Content.Code
         Scripts script;
         UI uI;
 
-        static public event Action? AddGameObject;
-
         #endregion
 
         #region Constructors
@@ -144,31 +142,5 @@ namespace MonogameProyect.Content.Code
         }
 
         #endregion
-
-        public GameObject Instantiate(GameObject prefab)
-        {
-            GameObject gO = new GameObject();
-
-            if (prefab.GetCollider != null)
-                gO.collider = prefab.GetCollider;
-
-            if (prefab.GetTrasform != null)
-                gO.transform = prefab.GetTrasform;
-
-            if (prefab.GetScripts() != null)
-                gO.script = prefab.GetScript;
-
-            if (prefab.GetSpriteRenderer != null)
-                gO.spriteRenderer = prefab.GetSpriteRenderer;
-
-            if (prefab.GetUI != null)
-                gO.uI = prefab.GetUI;
-
-            if (prefab.GetAudioSource != null)
-                gO.audioSource = prefab.GetAudioSource;
-
-            AddGameObject?.Invoke();
-            return gO;
-        }
     }
 }

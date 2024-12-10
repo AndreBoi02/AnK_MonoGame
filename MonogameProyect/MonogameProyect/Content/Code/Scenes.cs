@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace MonogameProyect.Content.Code
@@ -14,7 +13,7 @@ namespace MonogameProyect.Content.Code
 
         public virtual void LoadContentScene(Game1 game1){}
 
-        public virtual void UpdateScene()
+        public virtual void UpdateScene(GameTime? gameTime)
         {
             if (_gameObjects == null)
                 return;

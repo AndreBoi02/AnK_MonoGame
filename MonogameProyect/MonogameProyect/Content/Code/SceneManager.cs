@@ -1,8 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MonogameProyect.Content.Code
 {
@@ -34,9 +31,9 @@ namespace MonogameProyect.Content.Code
             }
         }
 
-        public static void UpdateScenes()
+        public static void UpdateScenes(GameTime? gameTime)
         {
-            _scenes[_currentScene].UpdateScene();
+            _scenes[_currentScene].UpdateScene(gameTime);
         }
 
         public static void DrawScenes(Game1 game1)

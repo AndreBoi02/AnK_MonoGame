@@ -11,6 +11,7 @@ namespace MonogameProyect
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private GameTime gameTime1;
         
         public Game1()
         {
@@ -46,7 +47,7 @@ namespace MonogameProyect
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            SceneManager.UpdateScenes();
+            SceneManager.UpdateScenes(gameTime);
 
             base.Update(gameTime);
         }
@@ -56,7 +57,7 @@ namespace MonogameProyect
             GraphicsDevice.Clear(Color.Black);
 
             SceneManager.DrawScenes(this);
-            
+
             base.Draw(gameTime);
         }
 

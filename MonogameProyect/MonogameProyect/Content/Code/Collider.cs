@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Diagnostics;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace MonogameProyect.Content.Code
 {
@@ -14,6 +12,7 @@ namespace MonogameProyect.Content.Code
         MouseState _lastMouseState;
         SpriteRenderer _spriteRenderer;
         public event EventHandler OnClick;
+        public event EventHandler OnReleased;
 
         public void SetSpriteRenderer(SpriteRenderer spriteRenderer)
         {
@@ -25,7 +24,6 @@ namespace MonogameProyect.Content.Code
             _rectangle = new((int)_position.X, (int)_position.Y,
                 (int)(_spriteRenderer.GetTexture2D().Width * _scale.X),
                 (int)(_spriteRenderer.GetTexture2D().Height * _scale.Y));
-            getRecatngle();
         }
 
         public void Update()
@@ -39,6 +37,10 @@ namespace MonogameProyect.Content.Code
                 {
                     Click();
                 }
+                else
+                {
+                    Released();
+                }
             }
             _lastMouseState = mouseState;
         }
@@ -46,6 +48,11 @@ namespace MonogameProyect.Content.Code
          void Click()
         {
             OnClick?.Invoke(this, EventArgs.Empty);
+        }
+
+        void Released()
+        {
+            OnReleased?.Invoke(this, EventArgs.Empty);
         }
 
         public void SetColliterPosition(Vector2 position)
@@ -56,13 +63,6 @@ namespace MonogameProyect.Content.Code
         public void SetColliterScale(Vector2 scale)
         {
             _scale = scale;
-        }
-
-        public void getRecatngle()
-        {
-            Debug.WriteLine(_rectangle.Height);
-            Debug.WriteLine(_rectangle.Width);
-            
         }
     }
 }

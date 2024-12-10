@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 
 namespace MonogameProyect.Content.Code
@@ -7,8 +6,6 @@ namespace MonogameProyect.Content.Code
     internal class level1 : Scenes
     {
         GameManager _manager;
-        GameObject _exitButton;
-
 
         public override void InitializeScene()
         {
@@ -18,12 +15,6 @@ namespace MonogameProyect.Content.Code
 
             _manager = new GameManager();
             _manager.InitiliazeGame();
-
-            //Exit Button
-            _exitButton = new GameObject(new SpriteRenderer(), new UI(), new Transform());
-            _exitButton.GetTrasform.SetPosition(new Vector2(700, 370));
-            _exitButton.GetTrasform.SetScale(new Vector2(.2f, .2f));
-            _gameObjects.Add(_exitButton);
         }
 
         public override void LoadContentScene(Game1 game1)
@@ -31,19 +22,13 @@ namespace MonogameProyect.Content.Code
             base.LoadContentScene(game1);
 
             _manager.LoadGameContent(game1);
-
-            //Exit Button Content
-            string imageName = "Images/Yeet";
-            _exitButton.GetSpriteRenderer.LoadContent(game1, imageName);
-            _exitButton.GetUI.CreateButton(_exitButton.GetSpriteRenderer);
-            _exitButton.GetUI.GetButton().OnClick += FinishGame;
         }
 
-        public override void UpdateScene()
+        public override void UpdateScene(GameTime gameTime)
         {
-            base.UpdateScene();
+            base.UpdateScene(gameTime);
 
-            _manager.UpdateGame();
+            _manager.UpdateGame(gameTime);
         }
 
         public override void DrawScene(Game1 game1)
@@ -51,11 +36,6 @@ namespace MonogameProyect.Content.Code
             base.DrawScene(game1);
 
             _manager.DrawGO(game1);
-        }
-
-        void FinishGame(object sender, EventArgs e)
-        {
-            SceneManager.ChangeScene(3);
         }
     }
 }

@@ -23,10 +23,7 @@ namespace MonogameProyect.Content.Code
 
         public GameObject()
         {
-            //transform = new Transform();
-            audioSource = new AudioSource();
-            spriteRenderer = new SpriteRenderer();
-            collider = new Collider();
+
         }
 
         public GameObject(SpriteRenderer pSpriteRenderer)
@@ -64,6 +61,16 @@ namespace MonogameProyect.Content.Code
             transform.SetSpriteRenderer(spriteRenderer);
             _scripts = new List<Scripts>();
             AddScript(script);
+        }
+
+        public GameObject(SpriteRenderer pSpriteRenderer, Transform pTransform, Collider pCollider)
+        {
+            spriteRenderer = pSpriteRenderer;
+            transform = pTransform;
+            transform.SetSpriteRenderer(spriteRenderer);
+            collider = pCollider;
+            transform.SetCollider(collider);
+            collider.SetSpriteRenderer(spriteRenderer);
         }
 
         #endregion

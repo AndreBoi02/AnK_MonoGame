@@ -11,7 +11,7 @@ namespace MonogameProyect
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
+        GameManager _manager;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -23,8 +23,10 @@ namespace MonogameProyect
         {
             // TODO: Add your initialization logic here
 
-            Localization.InitializeText();
-            SceneManager.InitializeScences();
+            //Localization.InitializeText();
+            //SceneManager.InitializeScences();
+            _manager = new GameManager();
+            _manager.InitiliazeGame();
 
             base.Initialize();
         }
@@ -35,7 +37,8 @@ namespace MonogameProyect
 
             // TODO: use this.Content to load your game content here
 
-            SceneManager.LoadScenesContent(this);
+            //SceneManager.LoadScenesContent(this);
+            _manager.LoadGameContent(this);
 
         }
         
@@ -46,7 +49,8 @@ namespace MonogameProyect
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             
-            SceneManager.UpdateScenes();
+            //SceneManager.UpdateScenes();
+            _manager.UpdateGame();
 
             base.Update(gameTime);
         }
@@ -55,7 +59,8 @@ namespace MonogameProyect
         {
             GraphicsDevice.Clear(Color.Black);
 
-            SceneManager.DrawScenes(this);
+            //SceneManager.DrawScenes(this);
+            _manager.DrawGO(this);
             
             base.Draw(gameTime);
         }

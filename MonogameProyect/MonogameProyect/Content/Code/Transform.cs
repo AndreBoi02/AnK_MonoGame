@@ -8,6 +8,7 @@ namespace MonogameProyect.Content.Code
 
         SpriteRenderer _sprieRenderer;
         UI _uI;
+        Collider _collider;
 
         #endregion
 
@@ -30,6 +31,11 @@ namespace MonogameProyect.Content.Code
             _uI = uI;
         }
 
+        public void SetCollider(Collider collider)
+        {
+            _collider = collider;
+        }
+
         #endregion
 
         #region ScaleStuff
@@ -39,6 +45,7 @@ namespace MonogameProyect.Content.Code
             _scale = value;
             _sprieRenderer?.SetSpriteScale(_scale);
             _uI?.SetButtonScale(_scale);
+            _collider?.SetColliterScale(_scale);
         }
 
         public void ScaleX(int val) 
@@ -75,6 +82,7 @@ namespace MonogameProyect.Content.Code
             _sprieRenderer?.SetSpritePosition(_position);
             _uI?.SetTextPosition(_position);
             _uI?.SetButtonPosition(_position);
+            _collider?.SetColliterPosition(_position);
         }
 
         public Vector2 GetPosition

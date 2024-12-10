@@ -9,6 +9,9 @@ namespace MonogameProyect.Content.Code
         Rectangle _rectangle;
         Color _shade = Color.White;
         SpriteRenderer _spriteRenderer;
+        MouseState _lastMouseState;
+
+        public event EventHandler OnClick;
 
         public Button(SpriteRenderer spriteRenderer, Vector2 position, Vector2 scale) 
         {
@@ -32,17 +35,26 @@ namespace MonogameProyect.Content.Code
             MouseState mouseState = Mouse.GetState();
             Rectangle cursor = new((int)mouseState.Position.X, (int)mouseState.Position.Y, 1, 1);
 
-            if (cursor.Intersects(_rectangle) && mouseState.LeftButton == ButtonState.Pressed)
+            if (cursor.Intersects(_rectangle))
             {
                 _shade = Color.DarkGray;
                 _spriteRenderer?.ChangeColor(_shade);
-                //actionToDo?.Invoke();
+                if(mouseState.LeftButton == ButtonState.Pressed && _lastMouseState.LeftButton == ButtonState.Released)
+                {
+                    Click();
+                }
             }
             else
             {
                 _shade = Color.White;
                 _spriteRenderer?.ChangeColor(_shade);
             }
+            _lastMouseState = mouseState;
+        }
+
+        void Click()
+        {
+            OnClick?.Invoke(this, EventArgs.Empty);
         }
     }
 }

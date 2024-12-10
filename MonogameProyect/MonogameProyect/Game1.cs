@@ -45,24 +45,7 @@ namespace MonogameProyect
                 || 
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            if (Keyboard.GetState().IsKeyDown(Keys.F))
-            {
-                SceneManager.ChangeScene(1);
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.Q))
-            {
-                SceneManager.ChangeScene(0);
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.E))
-            {
-                Localization.ChangeLanguage(Languages.ENG);
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.G))
-            {
-                Localization.ChangeLanguage(Languages.ESP);
-            }
-
+            
             SceneManager.UpdateScenes();
 
             base.Update(gameTime);

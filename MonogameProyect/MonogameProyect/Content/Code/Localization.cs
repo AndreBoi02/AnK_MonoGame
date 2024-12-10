@@ -20,9 +20,16 @@ namespace MonogameProyect.Content.Code
             languages = Languages.ENG;
 
             texts.Add("Title", new string[] {"ANK", "AYK"});
-            texts.Add("Start", new string[] {"Start", "Comenzar"});
             texts.Add("Settings", new string[] {"Settings", "Configuracion"});
             texts.Add("Score", new string[] {"Score", "Puntaciones"});
+            texts.Add("Credits", new string[] {"Credits", "Creditos"});
+            texts.Add("CreditsText", new string[] 
+            {"The following prototype was coded, and design by: \n " +
+            "                             Andre Mauricio \n " +
+            "                      Katia Xiomara Valencia", 
+             "El siguiente prototipo fue programado y disenado por: \n " +
+            "                          Andre Mauricio Leon \n " +
+            "                 Katia Xiomara Valencia Kavanagh"});
         }
 
         public static void ChangeLanguage(Languages language)

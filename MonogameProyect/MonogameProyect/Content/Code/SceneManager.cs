@@ -16,6 +16,8 @@ namespace MonogameProyect.Content.Code
             _scenes = new List<Scenes>()
             {
                 new MenuScene(),
+                new level1(),
+                new SettingScene(),
                 new CreditsScene()
             };
             foreach (Scenes scene in _scenes) 

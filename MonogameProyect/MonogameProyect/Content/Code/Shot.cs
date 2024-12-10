@@ -17,8 +17,7 @@ namespace MonogameProyect.Content.Code
             if (state.IsKeyDown(Keys.Space))
             {
                 Debug.WriteLine("POW");
-                _gameObject.Instantiate(new GameObject(new SpriteRenderer(), new Transform(), new Bullets()));
-                
+                //_gameObject.Instantiate(new GameObject(new SpriteRenderer(), new Transform(), new Bullets()));
             }
         }
     }

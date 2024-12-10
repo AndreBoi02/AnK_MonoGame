@@ -10,13 +10,14 @@ namespace MonogameProyect.Content.Code
 
         public virtual void InitializeScene()
         {
-            //GameObject.AddGameObject += OnAddGameObject;
         }
 
         public virtual void LoadContentScene(Game1 game1){}
 
         public virtual void UpdateScene()
         {
+            if (_gameObjects == null)
+                return;
             foreach (GameObject gameObject in _gameObjects)
             {
                 if (gameObject.GetScripts() != null)
@@ -28,6 +29,8 @@ namespace MonogameProyect.Content.Code
 
         public virtual void DrawScene(Game1 game1)
         {
+            if (_gameObjects == null)
+                return;
             foreach (GameObject gameObject in _gameObjects)
             {
                 if (gameObject.GetSpriteRenderer != null)

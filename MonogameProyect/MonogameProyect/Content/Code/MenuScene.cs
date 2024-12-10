@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace MonogameProyect.Content.Code
@@ -38,18 +39,30 @@ namespace MonogameProyect.Content.Code
         public override void LoadContentScene(Game1 game1)
         {
             //Tittle text content
-            string fontName = "MyMenuFont";
+            string fontName = "Fonts/TitleFont";
             _titleText.GetUI.GetText().LoadContent(game1, fontName);
 
             //Start button content
             string imageName = "Images/Yeet";
             _startButton.GetSpriteRenderer.LoadContent(game1, imageName);
             _startButton.GetUI.CreateButton(_startButton.GetSpriteRenderer);
+            _startButton.GetUI.GetButton().OnClick += StartGame;
 
             //Options button content
             string imageName2 = "Images/OF";
             _optionsButton.GetSpriteRenderer.LoadContent(game1, imageName2);
             _optionsButton.GetUI.CreateButton(_optionsButton.GetSpriteRenderer);
+            _optionsButton.GetUI.GetButton().OnClick += ShowOptions;
+        }
+
+        void StartGame(object sender, EventArgs e)
+        {
+            SceneManager.ChangeScene(3);
+        }
+
+        void ShowOptions(object sender, EventArgs e)
+        {
+            SceneManager.ChangeScene(2);
         }
     }
 }
